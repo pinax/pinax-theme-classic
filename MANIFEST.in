@@ -1,0 +1,2 @@
+recursive-include pinax_theme_classic/templates *
+recursive-include pinax_theme_classic/static *

@@ -1,0 +1,48 @@
+A Pinax theme using the classic 0.7 styling
+===========================================
+
+
+Quick Start
+-----------
+
+Include "pinax-theme-classic" in your requirements file and
+"pinax_theme_classic" in your INSTALLED_APPS.
+
+Make sure both template loaders and staticfiles finders includes
+app directories.
+
+Site name comes from Sites fixture.
+
+Your "site_base.html" should extend "theme_base.html" and should provide
+"footer" and "nav" blocks (the latter should just be a ul of li of a links).
+
+Your pages should have blocks "head_title" and "body" and should extend
+"site_base.html".
+
+The url name "home" should be defined as the homepage.
+
+
+Forms
+-----
+
+To style forms, classic theme uses uni-form 
+    
+    {% load uni_form_tags %}
+
+and do something like:
+
+    <form method="POST" action="" class="uniForm">
+        {% csrf_token %}
+        <fieldset class="inlineLabels">
+            {{ form|as_uni_form }}
+             <div class = "form_block">
+                 <input type="submit" name="action" />
+            </div>
+        </fieldset>
+    </form>
+
+
+Todo / Issues
+-------------
+
+* Add Todo/Issues
