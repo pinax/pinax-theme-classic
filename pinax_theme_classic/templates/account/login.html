@@ -41,6 +41,7 @@
         </fieldset>
     </form>
     
+    {% ifsetting ACCOUNT_USE_OPENID %}
     <p>{% trans "Or sign in with your OpenID" %}:</p>
     {# @@@ why isn't this just does as a form object ? #}
     <form class="login uniForm" action="/openid/register/" method="POST" autocapitalize="off">
@@ -65,6 +66,7 @@
             </div>
         </fieldset>
     </form>
+    {% endifsetting %}
     
     <p>{% blocktrans %}If you have any trouble logging in to your account, contact us at <a href="mailto:{{ CONTACT_EMAIL }}">{{ CONTACT_EMAIL }}</a>.{% endblocktrans %}</p>
 {% endblock %}

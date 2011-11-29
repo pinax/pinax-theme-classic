@@ -2,6 +2,7 @@
 
 {% load i18n %}
 {% load uni_form_tags %}
+{% load ifsetting_tag %}
 
 {% block head_title %}{% trans "Signup" %}{% endblock %}
 
@@ -25,7 +26,8 @@
                 </div>
             </fieldset>
         </form>
-        
+
+        {% ifsetting ACCOUNT_USE_OPENID %}
         {# @@@ currently OpenID signup is not supported via signup codes #}
         {% if not code %}
             <p>{% trans "Or sign in with your OpenID" %}:</p>
@@ -52,11 +54,12 @@
                     </div>
                 </fieldset>
             </form>
-
-            {% if request.user.is_authenticated %}
-                <div><a href="{% url acct_logout %}?next={{ request.path }}&amp;sm={{ split_test }}&amp;sn=logout">logout</a></div>
-            {% endif %}
         
+        {% endif %}
+        {% endifsetting %}
+
+        {% if request.user.is_authenticated %}
+            <div><a href="{% url acct_logout %}?next={{ request.path }}&amp;sm={{ split_test }}&amp;sn=logout">logout</a></div>
         {% endif %}
         
         {% url terms as terms_url %}
